@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Für Rayan – mit ganz viel Liebe</title>
+
+  <!-- Schöne, kindliche Typo + klare Leseschrift -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#fff7fb;
+      --bg2:#f2fbff;
+      --accent:#FF8FB1;
+      --accent-2:#92E6A7;
+      --accent-3:#9AB3F5;
+      --ink:#3a3a3a;
+      --muted:#6c6c6c;
+      --card:#ffffffcc;
+      --shadow: 0 12px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+
+    /* Grundlayout + sanfter, animierter Verlauf */
+    html,body{
+      height:100%;
+      margin:0;
+      color:var(--ink);
+      font-family:"Quicksand", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(120deg, var(--bg1), var(--bg2));
+      background-size: 200% 200%;
+      animation: bgShift 14s ease-in-out infinite;
+    }
+    @keyframes bgShift {
+      0%{background-position: 0% 50%}
+      50%{background-position: 100% 50%}
+      100%{background-position: 0% 50%}
+    }
+
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(16px, 3vw, 32px);
+    }
+
+    header{
+      text-align:center;
+      padding: 28px 16px 12px;
+      position:relative;
+    }
+    .badge{
+      display:inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background:#fff;
+      box-shadow: var(--shadow);
+      font-weight:700;
+      letter-spacing:.3px;
+      margin-bottom:14px;
+    }
+    h1{
+      margin: 6px 0 10px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height:1.1;
+      letter-spacing:.2px;
+    }
+    h1 .heart{ color: var(--accent); }
+    .subtitle{
+      color:var(--muted);
+      font-size: clamp(14px, 2.1vw, 18px);
+    }
+
+    /* Karten */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(12px, 2vw, 18px);
+      margin-top: 24px;
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--card);
+      backdrop-filter: blur(4px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 2.5vw, 24px);
+    }
+
+    /* Bilderrahmen – symmetrisch */
+    .photos{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(10px,1.5vw,16px);
+      align-items: center;
+    }
+    .photo{
+      aspect-ratio: 1/1;
+      border-radius: 20px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: 50% 40%;
+      display:block;
+    }
+    .photo:hover{
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 16px 36px rgba(0,0,0,.12);
+    }
+
+    /* Lauftext – endlose Liebesbotschaft */
+    .ticker-wrap{
+      overflow:hidden;
+      border-radius: var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .ticker{
+      display:flex;
+      gap: 40px;
+      padding: 12px 0;
+      white-space: nowrap;
+      animation: ticker 30s linear infinite;
+      will-change: transform;
+    }
+    .ticker:hover{ animation-play-state: paused; }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#fff, #f8f8ff);
+      border:1px solid #f1f1f6;
+      font-weight:600;
+    }
+    .pill .mini{
+      font-size: 18px;
+      line-height:1;
+    }
+    @keyframes ticker {
+      0%{ transform: translateX(0) }
+      100%{ transform: translateX(-50%) }
+    }
+
+    /* Rotierende islamische Sätze */
+    .duas{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(12px, 2vw, 18px);
+    }
+    .dua{
+      grid-column: span 6;
+      background:#fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(16px,2.2vw,22px);
+      position:relative;
+      overflow:hidden;
+    }
+    @media (max-width: 820px){
+      .dua{ grid-column: span 12; }
+      .photos{ grid-template-columns: 1fr; }
+    }
+    .dua h3{
+      margin:0 0 10px;
+      font-size: clamp(18px, 2.4vw, 22px);
+    }
+    .ar{
+      font-family: "Reem Kufi Ink", system-ui, sans-serif;
+      font-size: clamp(20px, 2.8vw, 26px);
+      direction: rtl;
+    }
+    .tr{
+      margin-top:6px;
+      color:var(--muted);
+      font-size: 14px;
+    }
+
+    /* Info-Zeile (Altersanzeige + nächster Geburtstag) */
+    .info{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      font-weight:600;
+    }
+    .chip{
+      background:#fff;
+      border:1px solid #f1f1f6;
+      padding:8px 12px;
+      border-radius:999px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Button für Effekt */
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      color:white; font-weight:700;
+      box-shadow: 0 10px 24px rgba(255,143,177,.35);
+      cursor:pointer;
+      transition: transform .15s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    /* Schwebende Herzchen (Canvas) */
+    #floaters{
+      position: fixed;
+      inset:0;
+      pointer-events:none;
+      z-index: 0;
+    }
+    main, header, footer { position: relative; z-index: 1; }
+
+    footer{
+      text-align:center;
+      padding: 26px 0 32px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* Kleine Deko-Emojis */
+    .spark{ filter: drop-shadow(0 4px 10px rgba(0,0,0,.08)); }
+  </style>
+</head>
+<body>
+  <canvas id="floaters" aria-hidden="true"></canvas>
+
+  <div class="wrap">
+    <header>
+      <div class="badge">01.09 – Rayan ist 1 Jahr alt 🎂</div>
+      <h1>Für unseren <span class="heart">kleinen Rayan</span> – du bist unser größtes Glück ✨</h1>
+      <p class="subtitle">Möge Allah dich behüten, dir Liebe, Lachen und ein Herz voller Licht schenken. Du bist so wertvoll. 💖</p>
+    </header>
+
+    <main class="grid">
+      <!-- Bilder – symmetrisch -->
+      <section class="card" aria-labelledby="fotos">
+        <h2 id="fotos" style="margin:0 0 14px;">Schöne Momente 📷</h2>
+        <div class="photos">
+          <figure class="photo">
+            <img src="Foto1.jpg" alt="Rayan – Foto 1">
+          </figure>
+          <figure class="photo">
+            <img src="Foto2.jpg" alt="Rayan – Foto 2">
+          </figure>
+          <figure class="photo">
+            <img src="Foto3.jpg" alt="Rayan – Foto 3">
+          </figure>
+        </div>
+      </section>
+
+      <!-- Laufender Liebestext -->
+      <section class="card ticker-wrap" aria-label="Liebesbotschaften">
+        <div class="ticker" id="tickerA">
+          <!-- Wir duplizieren den Inhalt später per JS für nahtlosen Loop -->
+          <div class="pill"><span class="mini">💞</span> Rayan, du bist unser Sonnenschein.</div>
+          <div class="pill"><span class="mini">🌙</span> Möge Allah (swt) dein Herz mit Frieden füllen.</div>
+          <div class="pill"><span class="mini">⭐</span> Du machst die Welt heller – jeden Tag.</div>
+          <div class="pill"><span class="mini">🧸</span> So klein, so stark geliebt.</div>
+          <div class="pill"><span class="mini">🌈</span> Glück und Baraka auf all deinen Wegen.</div>
+          <div class="pill"><span class="mini">🤍</span> Wir sind immer für dich da.</div>
+          <div class="pill"><span class="mini">🪽</span> Möge Allah dich behüten und leiten.</div>
+        </div>
+      </section>
+
+      <!-- Islamische Sätze / Duas -->
+      <section class="duas card" aria-labelledby="duas-title">
+        <h2 id="duas-title" style="margin-top:0;">Sanfte Worte & Duʿāʾ 🤍</h2>
+
+        <article class="dua">
+          <h3>Ma shā’ Allāh</h3>
+          <p class="ar" dir="rtl">ما شاءَ الله</p>
+          <p class="tr">„So wie Allah es gewollt hat.“ – Ein Ausdruck der Freude und Dankbarkeit für dich, Rayan.</p>
+        </article>
+
+        <article class="dua">
+          <h3>Barakallāhu fīk / fīki</h3>
+          <p class="ar" dir="rtl">بارك الله فيك</p>
+          <p class="tr">„Allah segne dich.“ – Möge Allah dir Segen und Güte schenken.</p>
+        </article>
+
+        <article class="dua">
+          <h3>Allahumma ḥfazhu</h3>
+          <p class="ar" dir="rtl">اللهم احفظه</p>
+          <p class="tr">„O Allah, bewahre ihn.“ – Möge Allah dich schützen, lieber Rayan.</p>
+        </article>
+
+        <article class="dua">
+          <h3>Rabbi zidhu ḥilmā wa nūran</h3>
+          <p class="ar" dir="rtl">رَبِّ زِدْهُ حِلْمًا وَنُورًا</p>
+          <p class="tr">„Mein Herr, mehre ihm Sanftmut und Licht.“ – Möge dein Weg immer hell sein.</p>
+        </article>
+      </section>
+
+      <!-- Altersanzeige + besonderer Button -->
+      <section class="card" aria-labelledby="zeit">
+        <h2 id="zeit" style="margin-top:0;">Zeit mit Rayan ⏳💗</h2>
+        <p>Seit deiner Geburt zählt jede Sekunde – und jede ist kostbar.</p>
+
+        <div class="info" id="ageInfo">
+          <div class="chip" id="ageYears">Alter: –</div>
+          <div class="chip" id="ageExact">Genau: –</div>
+          <div class="chip" id="nextBday">Nächster Geburtstag: –</div>
+        </div>
+
+        <div style="text-align:center; margin-top:16px;">
+          <button class="btn" id="celebrateBtn" aria-label="Feiere Rayan">
+            🎉 Feiere Rayan
+          </button>
+        </div>
+      </section>
+
+      <!-- Zweiter, langsamerer Lauftext (spiegelt Symmetrie) -->
+      <section class="card ticker-wrap" aria-label="Zweiter Lauftext">
+        <div class="ticker" id="tickerB" style="animation-duration: 38s;">
+          <div class="pill"><span class="mini">🧃</span> Möge dein Lächeln immer leicht sein.</div>
+          <div class="pill"><span class="mini">🪁</span> Spiele, staune, wachse – in Liebe.</div>
+          <div class="pill"><span class="mini">🧩</span> Kleine Schritte, große Wunder.</div>
+          <div class="pill"><span class="mini">🌟</span> Allah ist stets bei dir.</div>
+          <div class="pill"><span class="mini">🫶</span> Familie ist dein Zuhause.</div>
+          <div class="pill"><span class="mini">🍯</span> Süß wie Honig, stark wie Licht.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Für Rayan, mit unendlicher Liebe. <span class="spark">✨</span><br>
+      <small>Erstellt mit Herz &amp; Dua – GitHub Pages ready.</small>
+    </footer>
+  </div>
+
+  <script>
+    // --------- Helper: endloser Ticker (dupliziert Inhalt) ----------
+    function makeTickerSeamless(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.innerHTML = el.innerHTML + el.innerHTML; // Inhalt verdoppeln
+    }
+    makeTickerSeamless('tickerA');
+    makeTickerSeamless('tickerB');
+
+    // --------- Altersanzeige ----------
+    // Rayan wurde am 01.09.2024 geboren (da er am 01.09.2025 ein Jahr alt wurde).
+    // Falls du ein anderes Jahr meinst, einfach unten das Datum ändern.
+    const birthDate = new Date('2024-09-01T00:00:00'); // ISO
+    const ageYearsEl = document.getElementById('ageYears');
+    const ageExactEl = document.getElementById('ageExact');
+    const nextBdayEl = document.getElementById('nextBday');
+
+    function formatDHMS(ms){
+      const sec = Math.floor(ms/1000);
+      const d = Math.floor(sec/86400);
+      const h = Math.floor((sec%86400)/3600);
+      const m = Math.floor((sec%3600)/60);
+      const s = sec%60;
+      return `${d} Tage, ${h} Std, ${m} Min, ${s} Sek`;
+    }
+
+    function updateAge(){
+      const now = new Date();
+      const diff = now - birthDate;
+      const years = now.getFullYear() - birthDate.getFullYear() - (
+        (now.getMonth() < birthDate.getMonth() || (now.getMonth() === birthDate.getMonth() && now.getDate() < birthDate.getDate())) ? 1 : 0
+      );
+      ageYearsEl.textContent = `Alter: ${years} Jahr${years!==1?'e':''}`;
+
+      ageExactEl.textContent = `Genau: ${formatDHMS(diff)}`;
+
+      // Nächster Geburtstag (1. September jedes Jahr)
+      const currentYear = now.getFullYear();
+      let next = new Date(`${currentYear}-09-01T00:00:00`);
+      if (now > next) next = new Date(`${currentYear+1}-09-01T00:00:00`);
+      const until = next - now;
+      const days = Math.ceil(until/86400000);
+      nextBdayEl.textContent = `Nächster Geburtstag in: ${days} Tag${days!==1?'en':''} (am ${next.toLocaleDateString('de-DE')})`;
+    }
+    updateAge();
+    setInterval(updateAge, 1000);
+
+    // --------- Herzchen-Canvas (sanft schwebend) ----------
+    const canvas = document.getElementById('floaters');
+    const ctx = canvas.getContext('2d');
+    let W, H, hearts=[];
+    function resize(){
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function spawnHeart(x, y, vx= (Math.random()-.5)*0.6, vy= - (0.6+Math.random()*0.6), size= 12+Math.random()*10){
+      hearts.push({x,y,vx,vy, size, alpha: 0.8+Math.random()*0.2});
+    }
+    // stetig ein paar Herzchen
+    setInterval(()=>spawnHeart(Math.random()*W, H+10, (Math.random()-.5)*0.3, -(.6+Math.random()*0.5), 10+Math.random()*8), 500);
+
+    function drawHeart(x, y, s, a){
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(s/20, s/20);
+      ctx.globalAlpha = a;
+      ctx.beginPath();
+      // Herzpfad
+      ctx.moveTo(0,6);
+      ctx.bezierCurveTo(0,0,-10,-4,-10,4);
+      ctx.bezierCurveTo(-10,12,0,16,0,22);
+      ctx.bezierCurveTo(0,16,10,12,10,4);
+      ctx.bezierCurveTo(10,-4,0,0,0,6);
+      ctx.fillStyle = 'rgba(255,143,177,0.9)';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function tick(){
+      ctx.clearRect(0,0,W,H);
+      hearts.forEach(h=>{
+        h.x += h.vx;
+        h.y += h.vy;
+        h.vy += 0.004; // leichte "Schwerkraft"
+        h.alpha -= 0.002;
+        drawHeart(h.x, h.y, h.size, Math.max(h.alpha,0));
+      });
+      hearts = hearts.filter(h => h.y < H+40 && h.alpha > 0);
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    // --------- Konfetti/Herzen beim Klicken + Button ----------
+    function burst(x,y, n=28){
+      for(let i=0;i<n;i++){
+        const a = Math.random()*Math.PI*2;
+        const speed = 1+Math.random()*1.6;
+        spawnHeart(x,y, Math.cos(a)*speed, Math.sin(a)*speed, 10+Math.random()*8);
+      }
+    }
+    document.addEventListener('click', (e)=> burst(e.clientX, e.clientY));
+    document.getElementById('celebrateBtn').addEventListener('click', (e)=>{
+      const rect = e.currentTarget.getBoundingClientRect();
+      burst(rect.left+rect.width/2, rect.top+rect.height/2);
+    });
+
+    // --------- Kleine Freundlichkeit: beim Laden einmal feiern ----------
+    window.addEventListener('load', ()=>{
+      setTimeout(()=>burst(window.innerWidth*0.5, 160, 36), 500);
+    });
+  </script>
+</body>
+</html>
