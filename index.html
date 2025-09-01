@@ -278,29 +278,31 @@
       <section class="duas card" aria-labelledby="duas-title">
         <h2 id="duas-title" style="margin-top:0;">Sanfte Worte & Duʿāʾ 🤍</h2>
 
-        <article class="dua">
-          <h3>Ma shā’ Allāh</h3>
-          <p class="ar" dir="rtl">ما شاءَ الله</p>
-          <p class="tr">„So wie Allah es gewollt hat.“ – Ein Ausdruck der Freude und Dankbarkeit für dich, Rayan.</p>
-        </article>
+        <div class="dua-grid"></div>
+            <article class="dua">
+                <h3>Baraka</h3>
+                <p class="ar" dir="rtl">ركة</p>
+                <p class="tr">„In deinem Leben möge stets Baraka sein – Segen in jedem Lächeln, jedem Schritt und jedem Atemzug."</p>
+            </article>
 
-        <article class="dua">
-          <h3>Barakallāhu fīk / fīki</h3>
-          <p class="ar" dir="rtl">بارك الله فيك</p>
-          <p class="tr">„Allah segne dich.“ – Möge Allah dir Segen und Güte schenken.</p>
-        </article>
+            <article class="dua">
+                <h3>Rahma / fīki</h3>
+                <p class="ar" dir="rtl">رحمة</p>
+                <p class="tr">„Allahs Rahma sei wie ein Mantel, der dich wärmt und dir Geborgenheit schenkt, wohin du auch gehst."</p>
+            </article>
 
-        <article class="dua">
-          <h3>Allahumma ḥfazhu</h3>
-          <p class="ar" dir="rtl">اللهم احفظه</p>
-          <p class="tr">„O Allah, bewahre ihn.“ – Möge Allah dich schützen, lieber Rayan.</p>
-        </article>
+            <article class="dua">
+                <h3>Noor</h3>
+                <p class="ar" dir="rtl">نور</p>
+                <p class="tr">„Dein Herz möge von Nur erhellt werden, damit dein Weg immer von Klarheit, Güte und Hoffnung begleitet ist."</p>
+            </article>
 
-        <article class="dua">
-          <h3>Rabbi zidhu ḥilmā wa nūran</h3>
-          <p class="ar" dir="rtl">رَبِّ زِدْهُ حِلْمًا وَنُورًا</p>
-          <p class="tr">„Mein Herr, mehre ihm Sanftmut und Licht.“ – Möge dein Weg immer hell sein.</p>
-        </article>
+            <article class="dua">
+                <h3>Sakīna</h3>
+                <p class="ar" dir="rtl">سكينة</p>
+                <p class="tr">„Möge Allah dir Sakīna schenken – innere Ruhe, Harmonie und ein Herz, das stets in Frieden schlägt."</p>
+            </article>
+       </div> 
       </section>
 
       <!-- Altersanzeige + besonderer Button -->
@@ -365,6 +367,32 @@
       const m = Math.floor((sec%3600)/60);
       const s = sec%60;
       return `${d} Tage, ${h} Std, ${m} Min, ${s} Sek`;
+    }
+    /* Titel mittig über Grid */
+    .dua-title {
+        text-align: center;
+        margin: 0 0 22px;
+        font-size: clamp(22px, 3vw, 28px);
+    }
+
+    /* Neues Grid für die Cards */
+    .dua-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(16px, 2vw, 24px);
+    }
+
+    /* Karten (bereits vorhanden, nur sichergestellt) */
+    .dua {
+        background:#fff;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: clamp(16px,2.2vw,22px);
+    }
+    @media (max-width: 820px){
+        .dua-grid {
+            grid-template-columns: 1fr;
+    }
     }
 
     function updateAge(){
